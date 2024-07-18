@@ -25,7 +25,7 @@
               <Table.Td colspan="11" class="text-center h-[200px]">Нет данных</Table.Td>
             </Table.Tr>
             <template v-for="(item, i) in bonuses" :key="i">
-              <BonusTableItem :item="item"/>
+              <BonusTableItem :item="bonuses[i]"/>
             </template>
           </Table.Tbody>
         </Table>

@@ -12,6 +12,7 @@ export const useBonusStore = defineStore('bonus', () => {
     const meta = ref({})
     const query=ref({compares:{},filters:{}})
     const getBonuses = async () => {
+        bonuses.value=[]
         query.value.filters=removeNullOrEmpty(query.value.filters)
         query.value.compares=removeNullOrEmpty(query.value.compares)
         let response={}

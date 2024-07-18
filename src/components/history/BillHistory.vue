@@ -89,10 +89,10 @@ async function clear() {
 
 
 async function order(name, direction) {
-  if (query?.value?.sorts[name] && query.value.sorts[name] === direction) {
-    delete query.value.sorts[name]
+  if (item_query?.value?.sorts[name] && item_query.value.sorts[name] === direction) {
+    delete item_query.value.sorts[name]
   } else {
-    query.value.sorts[name] = direction
+    item_query.value.sorts[name] = direction
   }
   await historyRequest()
 }
