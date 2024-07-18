@@ -55,7 +55,7 @@ export const fakeBonuses = (data) => {
             name: entry.manager_name,
             deposit: `${entry.deposit} ₽`,
             lots: entry.volume_lots.toString(),
-            bonus_this_month: `${entry.payoff} ₽`,
+            bonus_this_month: `${entry.bonus} ₽`,
             potential_bonus: `${entry.potential_bonus} ₽`,
             to_pay: `${entry.payoff} ₽`,
             paid: `${entry.paid} ₽`,
