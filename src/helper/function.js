@@ -51,7 +51,7 @@ export const fakeBonuses = (data) => {
         const entries=data[manager]
         console.log(entries,manager)
         const items = entries.map(entry => ({
-            lk: entry.contact_id.toString(),
+            lk: entry.contact_name + ' ( '+ entry.contact_id.toString() + ' )',
             name: entry.manager_name,
             deposit: `${entry.deposit} ₽`,
             lots: entry.volume_lots.toString(),
