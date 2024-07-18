@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dct-right-tab-active{
+    font-weight:600!important;
+    border-bottom: 3px solid #213343;
+    transition: 0.3s background-color  ;
+}
+
+
+/* width */
+.custom-scroll::-webkit-scrollbar,.fc-scroller::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+}
+
+/* Track */
+.custom-scroll::-webkit-scrollbar-track,.fc-scroller::-webkit-scrollbar-track {
+    background: rgba(192, 192, 192, 0.23);
+}
+
+/* Handle */
+.custom-scroll::-webkit-scrollbar-thumb,.fc-scroller::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 6.5px;
+}
+
+/* Handle on hover */
+.custom-scroll::-webkit-scrollbar-thumb:hover,.fc-scroller::-webkit-scrollbar-thumb:hover {
+    background: #c0c0c0;
+}
+
+.dct-calendar-pulse{
+    box-shadow: 0 0 0 0 #2a7cef;
+    transform: scale(1);
+    animation: pulse-calendar 2s infinite;
+    z-index: 9999999;
+}
+
+.dct-item-pulse{
+    box-shadow: 0 0 0 0 #2a7cef;
+    transform: scale(1);
+    animation: pulse 2s infinite;
+    position: relative;
+    z-index: 9999999;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(42, 124, 239, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 14px rgba(255, 255, 255,0.9);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(42, 124, 239, 0.22);
+    }
+}
+
+@keyframes pulse-calendar {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(42, 124, 239, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 7px rgba(255, 255, 255,0.9);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(42, 124, 239, 0.22);
+    }
+}
