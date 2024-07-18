@@ -16,7 +16,8 @@
     <Table.Tr v-for="subItem in item.items" :key="subItem.lk">
       <template v-for="key in Object.keys(bonus_labels)" :key="key">
         <Table.Td class="whitespace-nowrap" :class="{'pl-12':key==='lk'}">
-          {{ subItem[key] }}
+          <span v-if="key==='lk'" v-html="item.lk"></span>
+          <span v-else>{{ subItem[key] }}</span>
         </Table.Td>
       </template>
     </Table.Tr>
