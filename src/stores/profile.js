@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import {ref} from "vue";
 import centerClient from "../../centerClient.js";
+import apiClient from "../../apiClient.js";
 
 export const useProfileStore = defineStore('profile', () => {
 
@@ -21,7 +22,15 @@ export const useProfileStore = defineStore('profile', () => {
     }
 
     const errors=ref([])
-    const login = async (state = null) => {
+
+    const logout = async (state = null) => {
+            await apiClient.post(`logout`, user.value);
+            let domain = 'http://view.afin-panel.ru'
+            localStorage.clear();
+            document.cookie = `credentials=''; path=/;`;
+            window.location.href = domain
+    }
+        const login = async (state = null) => {
         try{
             const cookies = document.cookie.split(";");
 
@@ -55,6 +64,7 @@ export const useProfileStore = defineStore('profile', () => {
         user,
         errors,
         authorized,
-        login
+        login,
+        logout
     };
 });

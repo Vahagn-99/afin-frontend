@@ -19,6 +19,7 @@
           <Button
               type="button"
               class="w-24 mr-1 bg-[#213343] text-white"
+              @click="logout"
           >
             Да
           </Button>
@@ -31,10 +32,15 @@
 <script setup>
 import {Dialog} from "@/base-components/Headless";
 import Button from "@/base-components/Button/Button.vue";
+import {useProfileStore} from "@/stores/profile.js";
 
 const emit = defineEmits(["close-modal"]);
-
+const profileStore=useProfileStore()
 function closeModal(){
   emit('close-modal')
+}
+
+async function logout() {
+  await profileStore.logout()
 }
 </script>
