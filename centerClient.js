@@ -7,7 +7,9 @@ const centerClient =
         baseURL:  url,
         headers: {
             'Content-Type': 'application/json',
+
         },
+
     });
 
 export default centerClient

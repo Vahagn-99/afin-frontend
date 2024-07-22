@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
 import Bill from "./../views/Bill.vue";
 import Rating from "./../views/Rating.vue";
 import Bonus from "./../views/Bonus.vue";

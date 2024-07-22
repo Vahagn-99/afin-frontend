@@ -49,10 +49,10 @@ export const useProfileStore = defineStore('profile', () => {
 
             localStorage.setItem('authorized', credentials);
 
-            let domain = 'http://view.afin-panel.ru'
+            let domain = 'http://localhost:5175'
             const encodedJsonString = encodeURIComponent(credentials);
             document.cookie = `credentials=${encodedJsonString}; path=/;`;
-            window.location.href = domain
+            // window.location.href = domain
 
             errors.value=[];
         }catch (e){

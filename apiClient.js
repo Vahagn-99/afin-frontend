@@ -15,15 +15,15 @@ for (let i = 0; i < cookies.length; i++) {
 let token = null;
 let cid = null;
 
-// token="14|BQoWvEDzZ4msQ16b3W10xnWv5bw9m6RmxheibbJg1f5e0f55"
-// cid="377701"
+
 let url='https://afin-panel.ru/api/v1/'
 
 
 if (retrievedJsonData) {
-    console.log(retrievedJsonData,12)
     localStorage.setItem('token', retrievedJsonData.access_token)
     token = localStorage.getItem("token")
+}else{
+    token=getParameterByName('token')
 }
 
 const apiClient =
