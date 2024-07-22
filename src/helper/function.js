@@ -1,17 +1,24 @@
 import router from "../router/index.ts";
 import {months} from "@/helper/const.js";
 
-export const linkTo = (pageName,id=null) => {
+export const linkTo = (pageName, id = null) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('access_token');
 
-    setTimeout(()=>{
+    setTimeout(() => {
+        const params = id ? { id } : {};
+        const query = accessToken ? { access_token: accessToken } : {};
+
         router.push({
             name: pageName,
-            params: id?{id:id}:{},
+            params: params,
+            query: query,
         }).catch(err => {
             console.error('Navigation error:', err);
         });
-    },300)
+    }, 300);
 };
+
 
 export const getMonthText=(inputDate)=>{
 
