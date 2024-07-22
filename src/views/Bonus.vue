@@ -1,5 +1,5 @@
 <template>
-  <div class="px-6 mt-4">
+  <div class="px-6 mt-4 mb-6">
     <BonusTab/>
   </div>
 </template>

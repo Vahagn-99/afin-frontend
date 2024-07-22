@@ -22,7 +22,7 @@
       </li>
     </ul>
   </div>
-  <div class="px-6 mt-4">
+  <div class="px-6 mt-4 mb-6">
     <CurrentMonthTab v-if="showTab.current_month"/>
     <LastMonthTab v-if="showTab.last_month"/>
     <CurrentYearTab v-if="showTab.current_year"/>
