@@ -1,7 +1,7 @@
 <template>
   <div class="flex mb-4 justify-end items-center">
     <div class="flex items-center gap-4">
-      <div class="text-[#2a7cef] hover:underline cursor-pointer" @click="clear" v-if="Object.keys(query.filters).length>0||Object.keys(query.compares).length>0">Сбросить фильтр</div>
+      <div class="text-[#2a7cef] hover:underline cursor-pointer" @click="clear" v-if="Object.keys(query.filters).length>0">Сбросить фильтр</div>
       <Button class="flex items-center gap-2 text-gray-400" @click="openFilter"><Lucide icon="Filter"/> Фильтры</Button>
     </div>
   </div>
