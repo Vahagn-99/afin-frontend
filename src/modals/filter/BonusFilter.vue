@@ -46,7 +46,7 @@ function transformReportTitle(title) {
   // Define the pattern to match "Отчет за "
   const prefix = "Отчет за ";
   // Define the replacement prefix
-  const replacement = "До ";
+  const replacement = "За ";
 
   // Check if the title starts with the prefix
   if (title.startsWith(prefix)) {
