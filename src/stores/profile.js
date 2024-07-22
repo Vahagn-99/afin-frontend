@@ -24,7 +24,7 @@ export const useProfileStore = defineStore('profile', () => {
     const errors=ref([])
 
     const logout = async (state = null) => {
-            await apiClient.post(`logout`, user.value);
+            // await apiClient.post(`logout`, user.value);
             let domain = 'https://view.afin-panel.ru'
             localStorage.clear();
             document.cookie = `credentials=''; path=/;`;

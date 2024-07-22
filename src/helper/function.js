@@ -96,5 +96,5 @@ export const getParameterByName=(name, url)=> {
 
 export const checkParameter=()=>{
     let token=getParameterByName('access_token')
-    return token==="8|fNzUTq5rsThgAebnrLAM8iML8sbCNN6tLt6Mx0XU1c028f1c"
+    return token==="10|mG7KYFdMzyd5z2N1u4ZyDWyroMu4UGazOjsF4Ei9e21f12d2"
 }
