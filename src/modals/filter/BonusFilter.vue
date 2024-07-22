@@ -3,11 +3,9 @@
   <template #default>
    <div class="mt-4">
      <FormLabel>Состояние бонуса до</FormLabel>
-     <FormSelect class="min-h-[38px] mt-3 !box sm:mt-0" v-model="query.compares">
+     <FormSelect class="min-h-[38px] mt-3 !box sm:mt-0" v-model="query.filters.date">
        <option value=""></option>
-       <option v-for="(date,key) in historyList" :value='[{"field":"date",
-        "operator":"<=",
-        "value":date.from}]' :key="key">{{transformReportTitle(date.name)}}</option>
+       <option v-for="(date,key) in historyList" :value='date.from' :key="key">{{transformReportTitle(date.name)}}</option>
      </FormSelect>
    </div>
     <div class="mt-4">

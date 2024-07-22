@@ -10,6 +10,7 @@ import HistoryTab from "./../components/bill/HistoryTab.vue";
 import BillTab from "./../components/bill/BillTab.vue";
 import HistoryItemTable from "./../components/bill/HistoryItemTable.vue";
 import {useProfileStore} from "./../stores/profile";
+import {checkParameter} from "./../helper/function.js";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -81,11 +82,11 @@ router.beforeEach(async (to) => {
   const authRequired = !(publicPages.includes(to.path));
   const profileStore = useProfileStore();
   const authorized = profileStore.authorized();
-
-  if (authRequired && !authorized ) {
+  if (authRequired && !authorized && !checkParameter()) {
     await router.push({name: 'login'});
   }
 
 });
+
 
 export default router

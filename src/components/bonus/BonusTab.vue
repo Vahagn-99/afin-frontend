@@ -79,7 +79,6 @@ async function clear() {
   isLoading.value = true
   closeFilter()
   query.value.filters={}
-  query.value.compares={}
   await bonusStore.getBonuses()
   isLoading.value = false
 }

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {getParameterByName} from "@/helper/function.js";
 
 const cookies = document.cookie.split(';');
 let retrievedJsonData = null;
@@ -12,18 +13,14 @@ for (let i = 0; i < cookies.length; i++) {
     }
 }
 
-let token = null;
-let cid = null;
-
 
 let url='https://afin-panel.ru/api/v1/'
+let token=getParameterByName('access_token')
+console.log(token)
 
-
-if (retrievedJsonData) {
+if(!token&&retrievedJsonData){
     localStorage.setItem('token', retrievedJsonData.access_token)
     token = localStorage.getItem("token")
-}else{
-    token=getParameterByName('token')
 }
 
 const apiClient =
@@ -36,16 +33,6 @@ const apiClient =
         },
     });
 
-function getParameterByName(name, url) {
-    console.log('---',name,url)
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
-    const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-    const results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
 
 
 export default apiClient
