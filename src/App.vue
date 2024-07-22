@@ -5,7 +5,7 @@ import {Dialog} from "@/base-components/Headless/index.ts";
 import {ref} from "vue";
 const successText=ref(null)
 const isSuccessNotification=ref(false)
-const isFaildNotification=ref(false)
+const isFailedNotification=ref(false)
 
 window.success = function(text){
   successText.value=text
@@ -45,7 +45,7 @@ window.failed = function(){
       </div>
     </div>
   </div>
-  <Dialog :open="isFaildNotification">
+  <Dialog :open="isFailedNotification">
     <Dialog.Panel>
       <div class="p-5 text-center">
         <Lucide icon="XCircle" class="text-red-600 w-[30px] h-[28px]"/>

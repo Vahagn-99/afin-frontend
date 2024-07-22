@@ -24,7 +24,7 @@ export const useBillStore = defineStore('bill', () => {
         status.value=response.data.status
         console.log(status.value)
     }
-    const importFile = async (close, setLoading) => {
+    const importFile = async (close, setLoading,success,failed) => {
         setLoading(true);
         try {
             const formData = new FormData();
@@ -43,20 +43,26 @@ export const useBillStore = defineStore('bill', () => {
 
             const checkStatusInterval = setInterval(async () => {
                 await getImportStatus();
-                console.log(status.value, 21);
+                console.log(status.value);
                 if (status.value !== 'pending') {
                     clearInterval(checkStatusInterval);
-                    window.parent.success('Файл успешно загружен !');
+                    // window.parent.success('Файл успешно загружен !');
                     setLoading(false);
-                    close();
+                    success('Файл успешно загружен !')
+                    setTimeout(()=>{
+                        close();
+                    },2000)
                     await getBills()
                 }
             }, 2000);
         } catch (e) {
             errors.value = e.response.data.errors;
-            window.parent.failed();
+            // window.parent.failed();
             setLoading(false);
-        }
+            failed()
+            setTimeout(()=>{
+                close();
+            },2000)        }
     }
     const page = ref(1)
     const per_page = ref(20)

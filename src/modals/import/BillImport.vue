@@ -26,9 +26,27 @@
         </div>
       </div>
     </template>
-
   </ImportModal>
-
+  <Dialog :open="isFailedNotification">
+    <Dialog.Panel>
+      <div class="p-5 text-center">
+        <Lucide icon="XCircle" class="text-red-600 w-[30px] h-[28px]"/>
+        <div class="mt-2 text-slate-500">
+          Что-то пошло не так
+        </div>
+      </div>
+    </Dialog.Panel>
+  </Dialog>
+  <Dialog :open="isSuccessNotification">
+    <Dialog.Panel>
+      <div class="p-5 text-center">
+        <Lucide icon="CheckCircle" class="w-16 h-16 mx-auto mt-3 text-green-500" />
+        <div class="mt-2 text-slate-500">
+          {{successText}}
+        </div>
+      </div>
+    </Dialog.Panel>
+  </Dialog>
 </template>
 <script setup>
 import {FormLabel} from "@/base-components/Form/index.ts";
@@ -39,15 +57,35 @@ import {useBillStore} from "@/stores/bill.js";
 import {storeToRefs} from "pinia";
 import {ref} from "vue";
 import LoadingIcon from "@/base-components/LoadingIcon/index.ts";
+import Lucide from "@/base-components/Lucide/index.ts";
+import {Dialog} from "@/base-components/Headless/index.ts";
 const emit=defineEmits(['close'])
 const billStore=useBillStore()
 const {importObject}=storeToRefs(billStore)
 const isLoading=ref(false)
+const successText=ref(null)
+const isSuccessNotification=ref(false)
+const isFailedNotification=ref(false)
+
+const success=(text)=>{
+  successText.value=text
+  isSuccessNotification.value=true
+  setTimeout(() => {
+    isSuccessNotification.value=false
+  }, 1500)
+}
+
+const failed=()=>{
+  isFailedNotification.value=true
+  setTimeout(() => {
+    isFailedNotification.value=false
+  }, 1500)
+}
 const close= () =>{
   emit('close')
 }
 async function importFile() {
-  await billStore.importFile(close,setLoading)
+  await billStore.importFile(close,setLoading,success,failed)
 }
 
 function setLoading(val){
@@ -55,8 +93,6 @@ function setLoading(val){
 
 }
 function getFileValue(file){
-  console.log('---------')
-  console.log(file)
   importObject.value.file=file
 }
 
