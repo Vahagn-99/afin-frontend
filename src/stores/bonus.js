@@ -10,14 +10,12 @@ export const useBonusStore = defineStore('bonus', () => {
     const page = ref(1)
     const per_page = ref(20)
     const meta = ref({})
-    const query=ref({compares:{},filters:{}})
+    const query=ref({filters:{}})
     const getBonuses = async () => {
         bonuses.value=[]
         query.value.filters=removeNullOrEmpty(query.value.filters)
-        query.value.compares=removeNullOrEmpty(query.value.compares)
         let response={}
-        console.log(Object.keys(query.value.compares))
-        if(Object.keys(query.value.compares).length>0){
+        if(query.value.filters.date){
             response = await apiClient.get(`managers/bonuses/monthly`,{
                 params: query.value
             });
