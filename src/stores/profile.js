@@ -25,7 +25,7 @@ export const useProfileStore = defineStore('profile', () => {
 
     const logout = async (state = null) => {
             await apiClient.post(`logout`, user.value);
-            let domain = 'http://view.afin-panel.ru'
+            let domain = 'https://view.afin-panel.ru'
             localStorage.clear();
             document.cookie = `credentials=''; path=/;`;
             window.location.href = domain
